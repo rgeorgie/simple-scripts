@@ -6,7 +6,7 @@
 #Date Mar 11 2018
 
 #searching for wlan interfaces in monitoring mode
-DEV=`ifconfig | awk '/[w][l][a][n][0-9][m][o][n]/ {print $1}' | cut -d ':' -f 1`
+DEV=`ifconfig | awk '/wlan[0-9]mon/ {print $1}' | cut -d ':' -f 1`
 
 #restore the state
 for i in $DEV
