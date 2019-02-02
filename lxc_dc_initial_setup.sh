@@ -8,9 +8,15 @@
 # the domain name is set up
 
 # This add the domain users to sudoers and reload the profile
-# check if exist TODO
-echo -e "#Added by the SysAdmin\n%sudo@ad.linuxadmin.club ALL=(ALL) ALL" >> /etc/sudoers &&
-source ~/.bashrc &&
+
+# check if already there
+if cat /etc/sudoers | grep SysAdmin; then
+    echo "SysAdmin was here"
+  else
+    echo -e "#Added by the SysAdmin\n%sudo@ad.linuxadmin.club ALL=(ALL) ALL" >> /etc/sudoers &&
+    source ~/.bashrc &&
+fi
+
 # update&upgrade
 apt update && apt -y upgrade &&
 # packages needed
