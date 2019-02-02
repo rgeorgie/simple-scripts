@@ -5,7 +5,8 @@
 # I definitely don't like to repeat
 # what if have 1000 containers to join
 # it is tested under ProxmoxVE Ubuntu containers and AD
-# the domain name is set up
+
+# the domain name is set up TODO
 
 # This add the domain users to sudoers and reload the profile
 
