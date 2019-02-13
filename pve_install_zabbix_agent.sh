@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # Install zabbix-agent on ubuntu lxc nodes
 # Feb-13-2019
 # Rosen Georgiev a.k.a. Subzer0
@@ -6,7 +7,7 @@
 hostN=$(hostname)
 zabServer="Zabbix01" #change it TODO
 
-mkdir zabbix && cd zabbix &&
+mkdir ~/InitialSetup && mkdir ~/InitialSetup/zabbix && cd ~/InitialSetup/zabbix &&
 
 wget https://repo.zabbix.com/zabbix/4.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_4.0-2+bionic_all.deb &&
 
