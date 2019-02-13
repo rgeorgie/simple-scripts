@@ -7,14 +7,7 @@
 hostN=$(hostname)
 zabServer="Zabbix01" #change it TODO
 
-set -e
-# check if exist
-
-  if [[ $(systemctl status zabbix-agent | grep running) ]]; then
-    break
-  else
-    mkdir ~/InitialSetup && mkdir ~/InitialSetup/zabbix && cd ~/InitialSetup/zabbix
-  fi
+mkdir ~/InitialSetup && mkdir ~/InitialSetup/zabbix && cd ~/InitialSetup/zabbix &&
 
 wget https://repo.zabbix.com/zabbix/4.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_4.0-2+bionic_all.deb &&
 
