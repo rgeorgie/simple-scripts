@@ -24,8 +24,8 @@ apt update && apt -y upgrade &&
 apt install -y realmd packagekit &&
 # Create user folders TODO
 pam-auth-update &&
-# Change timezone TODO
-dpkg-reconfigure tzdata &&
+# Change timezone !!!! Change with your timezone.
+sudo timedatectl set-timezone America/Halifax &&
 # ask for Admin
 read -p "Enter `dnsdomainname` Admin: " aDmin
 # join the domain
