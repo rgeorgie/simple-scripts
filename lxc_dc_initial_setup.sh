@@ -7,6 +7,7 @@
 # it is tested under ProxmoxVE Ubuntu containers and AD
 
 # the domain name is set up TODO
+dOmain=$(dnsdomainname)
 
 # This add the domain users to sudoers and reload the profile
 
@@ -22,15 +23,26 @@
 apt update && apt -y upgrade &&
 # packages needed
 apt install -y realmd packagekit &&
+
 # Create user folders
-echo -e "#Added by the SysAdmin\nsession optional  pam_mkhomedir.so" >> /etc/pam.d/common-session && #TODO Tests
-#pam-auth-update &&
+# check if already done
+
+    if [[ $(cat /etc/pam.d/common-session | grep pam_mkhomedir.so) ]];then
+        echo "That's done! SysAdmin was here."
+    else
+        echo -e "#Added by the SysAdmin\nsession optional  pam_mkhomedir.so" >> /etc/pam.d/common-session &&
+        source ~/.bashrc
+    fi
+
 # Change timezone !!!! Change with your timezone.
 sudo timedatectl set-timezone America/Halifax &&
-# ask for Admin
-read -p "Enter `dnsdomainname` Admin: " aDmin
+
+# ask for DC Admin
+read -p "Enter $dOmain DC Admin: " aDmin
+
 # join the domain
-realm join --user=$aDmin `dnsdomainname` &&
+realm join --user=$aDmin $dOmain &&
+
 # Confirm
 realm list
 
