@@ -22,8 +22,9 @@
 apt update && apt -y upgrade &&
 # packages needed
 apt install -y realmd packagekit &&
-# Create user folders TODO
-pam-auth-update &&
+# Create user folders
+echo "session optional  pam_mkhomedir.so" >> /etc/pam.d/common-session && #TODO Tests
+#pam-auth-update &&
 # Change timezone !!!! Change with your timezone.
 sudo timedatectl set-timezone America/Halifax &&
 # ask for Admin
