@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# Install zabbix-agent on ubuntu lxc nodes
+# Execute from inside the container
+# Install zabbix-agent on Ubuntu lxc nodes
 # Feb-13-2019
 # Rosen Georgiev a.k.a. Subzer0
 
@@ -13,10 +14,10 @@ set -e
   if [[ $(systemctl status zabbix-agent | grep running) ]]; then
     break
   else
-    mkdir ~/InitialSetup && mkdir ~/InitialSetup/zabbix && cd ~/InitialSetup/zabbix
+    mkdir -p ~/InitialSetup/zabbix && cd ~/InitialSetup/zabbix
   fi
 
-wget https://repo.zabbix.com/zabbix/4.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_4.0-2+bionic_all.deb &&
+wget https://repo.zabbix.com/zabbix/4.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_4.0-2+bionic_all.deb && #TODO
 
 sudo dpkg -i zabbix-release_* &&
 
@@ -36,4 +37,4 @@ sudo systemctl enable zabbix-agent &&
 
 sudo ufw allow 10050/tcp
 
-echo "Done `date`"
+echo "Done by Subzer0 `date`"
