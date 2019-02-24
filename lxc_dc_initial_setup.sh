@@ -16,6 +16,7 @@ dOmain=$(dnsdomainname)
         echo "SysAdmin was here"
     else
         echo -e "#Added by the SysAdmin\n%sudo@ad.linuxadmin.club ALL=(ALL) ALL" >> /etc/sudoers &&
+        sed -i "s/services = nss, pam/services = nss, sudo, pam, ssh #by SysAdmin/g" /etc/sssd/sssd.conf &&
         source ~/.bashrc
     fi
 
