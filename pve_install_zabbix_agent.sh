@@ -6,10 +6,12 @@
 # Rosen Georgiev a.k.a. Subzer0
 
 hostN=$(hostname)
-zabServer="Zabbix01" #change it TODO
+
+read -p "Enter the Zabbix Server hostname: " zabServer
 
 set -e
-# check if exist
+
+# check if already set-up
 
   if [[ $(systemctl status zabbix-agent | grep running) ]]; then
     break
@@ -19,22 +21,22 @@ set -e
 
 wget https://repo.zabbix.com/zabbix/4.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_4.0-2+bionic_all.deb && #TODO
 
-sudo dpkg -i zabbix-release_* &&
+dpkg -i zabbix-release_* &&
 
-sudo apt update &&
+apt update &&
 
-sudo apt-get install zabbix-agent &&
+apt-get install zabbix-agent &&
 
-sudo sed -i "s/Server=127.0.0.1/Server=$zabServer/g" /etc/zabbix/zabbix_agentd.conf &&
+sed -i "s/Server=127.0.0.1/Server=$zabServer/g" /etc/zabbix/zabbix_agentd.conf &&
 
-sudo sed -i "s/ServerActive=127.0.0.1/ServerActive=$zabServer/g" /etc/zabbix/zabbix_agentd.conf &&
+sed -i "s/ServerActive=127.0.0.1/ServerActive=$zabServer/g" /etc/zabbix/zabbix_agentd.conf &&
 
-sudo sed -i "s/Hostname=Zabbix server/Hostname=$hostN/g" /etc/zabbix/zabbix_agentd.conf &&
+sed -i "s/Hostname=Zabbix server/Hostname=$hostN/g" /etc/zabbix/zabbix_agentd.conf &&
 
-sudo systemctl start zabbix-agent &&
+systemctl start zabbix-agent &&
 
-sudo systemctl enable zabbix-agent &&
+systemctl enable zabbix-agent &&
 
-sudo ufw allow 10050/tcp
+ufw allow 10050/tcp && ufw reload
 
-echo "Done by Subzer0 `date`"
+echo "Done by SysAdmin `date`"
