@@ -1,9 +1,9 @@
 #!/bin/bash
 
 #Author: Rosen Georgiev a.k.a Subzer0
-#Bash script for restoring Wlan after using Fern
-#Version 0.007
-#Date Mar 11 2018
+#Bash script for restoring Wlan after running Fern tool
+#Version 0.008
+#Date Mar 17 2019
 
 #searching for wlan interfaces in monitoring mode
 DEV=`ifconfig | awk '/wlan[0-9]mon/ {print $1}' | cut -d ':' -f 1`
