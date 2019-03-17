@@ -5,6 +5,8 @@
 # Date: Feb-12-2019
 # Re-Tested :) with PVE 4.15.18-32 and deb containers
 
+# Works on the current node only!!! TODO
+
 # Don't do it if you're not tested the updates first!!!
 
 # listing all running containers
