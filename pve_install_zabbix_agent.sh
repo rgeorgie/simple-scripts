@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Execute from inside the container
-# Install zabbix-agent on Ubuntu lxc nodes
+# Install zabbix-agent on Ubuntu LXC nodes
 # Feb-13-2019
 # Rosen Georgiev a.k.a. Subzer0
 
