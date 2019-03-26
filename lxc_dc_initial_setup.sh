@@ -36,7 +36,7 @@ apt install -y realmd packagekit &&
     fi
 
 # Change timezone !!!! Change with your timezone.
-sudo timedatectl set-timezone America/Halifax &&
+timedatectl set-timezone America/Halifax &&
 
 # ask for DC Admin
 read -p "Enter $dOmain DC Admin: " aDmin
