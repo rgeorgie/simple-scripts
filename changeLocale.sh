@@ -1,4 +1,6 @@
 #! /bin/bash
+# do not use it at all !!!
+# Subzer0
 
 for i in $(pct list | grep running |  awk '/[0-9]/{print $1}'); do 
 
