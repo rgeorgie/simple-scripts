@@ -9,6 +9,14 @@
 IPaddress=$(ip route | grep src | cut -d " " -f 9)
 DatE=$(date)
 
+MsG(){
+NuM=$(expr length "$Ban3");
+printf '%.s=' $(seq 1 $NuM);
+echo -e "\n$Ban3";
+printf '%.s=' $(seq 1 $NuM);
+echo;
+}
+
 # install apache2
 
 zypper install apache2 &&
@@ -20,9 +28,8 @@ systemctl start apache2 &&
 systemctl enable apache2 &&
 
 echo -e "<html>\n<body>\n<h1> It works! $DatE Subzer0 </h1>\n</body> \n</html>" > /srv/www/htdocs/index.html
-echo -e "=================================================\n"
-echo "= You may test the service on http://$IPaddress ="
-echo -e "=================================================\n"
+Ban3="= You may test the service on http://$IPaddress ="
+MsG;
 
 chown wwwrun /srv/www/htdocs/ -R &&
 
@@ -32,9 +39,8 @@ zypper install mariadb mariadb-client mariadb-tools &&
 systemctl start mysql &&
 systemctl enable mysql &&
 
-echo -e "=================================================\n"
-echo "== Please complete the following MySQL setup =="
-echo -e "=================================================\n"
+Ban3="== Please complete the following MySQL setup =="
+MsG;
 
 mysql_secure_installation &&
 
@@ -44,12 +50,11 @@ a2enmod php7
 systemctl restart apache2
 
 echo "<?php phpinfo(); ?>" > /srv/www/htdocs/test.php &&
-echo -e "=========================================================\n"
-echo "= You may test PHP service on http://$IPaddress/test.php ="
-echo -e "=========================================================\n"
+
+Ban3="= You may test PHP service on http://$IPaddress/test.php ="
+MsG;
 
 # install phpMyAdmin TODO
 
-echo -e "================================================================\n"
-echo "= Installation DONE at $DatE additional setup necessary! Subzer0 ="
-echo -e "================================================================\n"
+Ban3="= Installation DONE at $DatE additional setup necessary! Subzer0 ="
+MsG;
